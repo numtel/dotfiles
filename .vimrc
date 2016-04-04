@@ -1,11 +1,15 @@
 call pathogen#infect()
 set nu
+set pastetoggle=<F2>
 set colorcolumn=80
 set expandtab
 set tabstop=2
+set laststatus=2
 set shiftwidth=2
 set mouse=a
 set ai
+autocmd BufNewFile,BufRead /home/ben/meteorsql/* set noexpandtab
+" autocmd BufNewFile,BufRead /home/ben/pg-notify/* set noexpandtab
 
 " Highlight trailing spaces
 match ErrorMsg '\s\+$'
@@ -13,8 +17,8 @@ match ErrorMsg '\s\+$'
 syntax enable
 filetype plugin on
 filetype on
+au BufNewFile,BufRead *.es6 setlocal ft=javascript
 au BufNewFile,BufRead *.ino setlocal ft=c
-au BufNewFile,BufRead *.less setlocal ft=css
 au BufNewFile,BufRead * setlocal formatoptions-=cro
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
 " Commenting blocks of code.
@@ -23,7 +27,8 @@ function CommentType()
 \        ['// ', ['c', 'cpp', 'java', 'scala', 'js', 'javascript', 'php', 
 \                 'glsl']],
 \        ['# ', ['sh', 'ruby', 'python', 'conf', 'fstab', 'coffee']],
-\        ['" ', ['vim']]
+\        ['" ', ['vim']],
+\        ['-- ', ['sql']]
 \      ]
     if(index(def[1], &ft)>-1)
       return def[0]
