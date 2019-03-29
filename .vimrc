@@ -18,6 +18,7 @@ syntax enable
 filetype plugin on
 filetype on
 au BufNewFile,BufRead *.es6 setlocal ft=javascript
+au BufNewFile,BufRead *.vue setlocal ft=html
 au BufNewFile,BufRead *.ino setlocal ft=c
 au BufNewFile,BufRead * setlocal formatoptions-=cro
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
@@ -25,7 +26,7 @@ au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
 function CommentType()
   for def in [
 \        ['// ', ['c', 'cpp', 'java', 'scala', 'js', 'javascript', 'php', 
-\                 'glsl']],
+\                 'glsl', 'html']],
 \        ['# ', ['sh', 'ruby', 'python', 'conf', 'fstab', 'coffee']],
 \        ['" ', ['vim']],
 \        ['-- ', ['sql']]
